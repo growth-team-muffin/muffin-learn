@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Guida Iperammortamento 2026 — 28 Q&amp;A | Muffin</title>
+<title>Muffin · Focus Iperammortamento 2026</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -370,6 +370,77 @@
   }
   footer .normative { margin-top: 8px; font-size: 11px; opacity: 0.8; }
 
+  /* Hero inline anchor */
+  .hero-link {
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--orange);
+    padding-bottom: 1px;
+    transition: opacity 0.15s ease;
+  }
+  .hero-link:hover { opacity: 0.7; }
+
+  /* Tab variante CTA (orange filled, scrolla al calculator) */
+  .tab.tab-cta {
+    background: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 4px;
+    box-shadow: 0 2px 8px rgba(255, 79, 0, 0.18);
+  }
+  .tab.tab-cta:hover {
+    background: #E64700;
+    border-color: #E64700;
+    color: var(--white);
+    transform: translateY(-1px);
+  }
+
+  /* Sticky bottom CTA */
+  .sticky-cta {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120%);
+    background: var(--navy);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 100px;
+    box-shadow: 0 8px 24px rgba(10, 31, 68, 0.25);
+    z-index: 100;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    max-width: calc(100% - 32px);
+  }
+  .sticky-cta.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .sticky-cta a {
+    color: var(--white);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .sticky-cta .sticky-action {
+    background: var(--orange);
+    color: var(--white);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .sticky-cta .sticky-label { opacity: 0.85; }
+
   @media (max-width: 800px) {
     h1 { font-size: 26px; }
     .hero { padding: 32px 0 24px; }
@@ -378,6 +449,9 @@
     .calc-result-big { font-size: 28px; }
     .qa-question { padding: 16px 18px; font-size: 14px; }
     .qa-item.open .qa-answer { padding: 0 18px 18px 18px; }
+    .sticky-cta { bottom: 12px; padding: 10px 14px; }
+    .sticky-cta a { font-size: 13px; gap: 8px; }
+    .sticky-cta .sticky-label { display: none; }
   }
 </style>
 </head>
@@ -397,7 +471,7 @@
       <a href="./index.html">Home</a> &nbsp;›&nbsp; Guida Iperammortamento 2026
     </div>
     <h1>Guida Iperammortamento 2026 — <em>28 Q&amp;A</em></h1>
-    <p>Filtra per categoria o cerca per parola chiave. In fondo trovi il calcolatore del beneficio fiscale a 3 scaglioni (180% / 100% / 50%).</p>
+    <p>Filtra per categoria, cerca per parola chiave, oppure vai direttamente al <a href="#calculator" class="hero-link">calcolatore beneficio</a> (3 scaglioni: 180% / 100% / 50%).</p>
 
     <div class="search-wrap">
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -411,6 +485,7 @@
       <button class="tab" data-cat="calcolo">Calcolo &amp; Cumulo <span class="count">8</span></button>
       <button class="tab" data-cat="doc">Documentazione <span class="count">4</span></button>
       <button class="tab" data-cat="casi">Casi Particolari <span class="count">2</span></button>
+      <a href="#calculator" class="tab tab-cta">Calcolatore →</a>
     </div>
   </div>
 </section>
@@ -500,6 +575,14 @@
   </div>
 </footer>
 
+<!-- Sticky CTA bar -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#calculator">
+    <span class="sticky-label">Quanto vale per il tuo cliente?</span>
+    <span class="sticky-action">Calcola il beneficio →</span>
+  </a>
+</div>
+
 <script>
 // ============================================
 // DATI: 28 Q&A
@@ -579,7 +662,7 @@ const qaList = document.getElementById('qaList');
 const emptyState = document.getElementById('emptyState');
 const qaCount = document.getElementById('qaCount');
 const searchInput = document.getElementById('searchInput');
-const tabs = document.querySelectorAll('.tab');
+const tabs = document.querySelectorAll('.tab[data-cat]');
 
 let activeCat = 'all';
 let activeSearch = '';
@@ -674,6 +757,25 @@ function calc() {
   document.getElementById(id).addEventListener('input', calc);
 });
 calc();
+
+// ============================================
+// STICKY CTA — show after hero, hide near calculator
+// ============================================
+const stickyCta = document.getElementById('stickyCta');
+const heroEl = document.querySelector('.hero');
+const calcEl = document.getElementById('calculator');
+
+function updateSticky() {
+  if (!stickyCta || !heroEl || !calcEl) return;
+  const pastHero = window.scrollY > (heroEl.offsetTop + heroEl.offsetHeight - 80);
+  const calcRect = calcEl.getBoundingClientRect();
+  const calcVisible = calcRect.top < window.innerHeight - 80;
+  stickyCta.classList.toggle('visible', pastHero && !calcVisible);
+}
+
+window.addEventListener('scroll', updateSticky, { passive: true });
+window.addEventListener('resize', updateSticky);
+updateSticky();
 </script>
 
 </body>
