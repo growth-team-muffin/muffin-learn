@@ -44,7 +44,28 @@
   .header-inner { display: flex; justify-content: space-between; align-items: center; }
   .logo { display: inline-flex; align-items: center; text-decoration: none; }
   .logo img { height: 32px; width: auto; display: block; }
-  .header-tag { font-size: 13px; color: var(--gray-500); }
+  .header-cta {
+    background: var(--orange);
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+    box-shadow: 0 2px 8px rgba(255, 79, 0, 0.2);
+  }
+  .header-cta:hover {
+    background: #E64700;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 79, 0, 0.3);
+  }
+  @media (max-width: 600px) {
+    .header-cta { padding: 8px 14px; font-size: 13px; }
+  }
 
   /* Hero */
   .hero { padding: 56px 0 32px; background: var(--white); border-bottom: 1px solid var(--gray-200); }
@@ -462,7 +483,7 @@
     <a href="./index.html" class="logo" aria-label="Muffin">
       <img src="https://getmuffin.io/wp-content/uploads/2026/04/Muffin-logo.png" alt="Muffin">
     </a>
-    <div class="header-tag">La finanza agevolata smart</div>
+    <a href="./calcolatore.html" class="header-cta">Calcola il beneficio →</a>
   </div>
 </header>
 
@@ -487,7 +508,7 @@
       <button class="tab" data-cat="calcolo">Calcolo &amp; Cumulo <span class="count">8</span></button>
       <button class="tab" data-cat="doc">Documentazione <span class="count">4</span></button>
       <button class="tab" data-cat="casi">Casi Particolari <span class="count">2</span></button>
-      <a href="#calculator" class="tab tab-cta">Calcolatore →</a>
+      <a href="./calcolatore.html" class="tab tab-cta">Calcolatore →</a>
     </div>
   </div>
 </section>
@@ -507,66 +528,6 @@
   </div>
 </section>
 
-<!-- CALCULATOR -->
-<section class="calc-section" id="calculator">
-  <div class="container">
-    <div class="section-label">Calcolatore Beneficio</div>
-    <h2>Quanto vale davvero l'iperammortamento sul tuo investimento?</h2>
-    <p class="calc-intro">
-      Inserisci il costo del bene (IVA esclusa) e gli eventuali contributi cumulati (PNRR, Sabatini, ZES). Applichiamo i 3 scaglioni della L. 199/2025 e stimiamo il risparmio fiscale con aliquota IRES al 24%.
-    </p>
-
-    <div class="calc-grid">
-      <div class="calc-card">
-        <label for="costo">Costo bene (€) — al netto IVA</label>
-        <input type="number" id="costo" min="0" step="1000" value="100000">
-        <div class="calc-help">Costo storico fiscalmente rilevante.</div>
-
-        <label for="contributi">Contributi ricevuti (€) — PNRR, Sabatini, ZES, ecc.</label>
-        <input type="number" id="contributi" min="0" step="1000" value="0">
-        <div class="calc-help">Verranno sottratti dalla base di calcolo (principio di nettizzazione).</div>
-
-        <label for="ires">Aliquota IRES applicata (%)</label>
-        <input type="number" id="ires" min="0" max="100" step="0.5" value="24">
-        <div class="calc-help">Default 24%. Modifica se applicabile diversa.</div>
-      </div>
-
-      <div class="calc-output">
-        <h3>Stima beneficio</h3>
-        <div class="calc-result-big" id="resultBig">€ 0</div>
-        <div class="calc-result-label">Risparmio fiscale stimato</div>
-
-        <div class="calc-breakdown">
-          <div class="calc-row muted">
-            <span>Base di calcolo (netta)</span>
-            <span id="rowBase">€ 0</span>
-          </div>
-          <div class="calc-row">
-            <span>1ª fascia <span class="calc-tier-label">180% · ≤ 2,5M</span></span>
-            <span id="rowT1">€ 0</span>
-          </div>
-          <div class="calc-row">
-            <span>2ª fascia <span class="calc-tier-label">100% · 2,5–10M</span></span>
-            <span id="rowT2">€ 0</span>
-          </div>
-          <div class="calc-row">
-            <span>3ª fascia <span class="calc-tier-label">50% · 10–20M</span></span>
-            <span id="rowT3">€ 0</span>
-          </div>
-          <div class="calc-row total">
-            <span>Maggiorazione totale deducibile</span>
-            <span id="rowMagg">€ 0</span>
-          </div>
-        </div>
-
-        <div class="calc-disclaimer">
-          Stima indicativa. La fascia 3 si applica solo fino al limite annuale di €20M; importi eccedenti non sono agevolabili. Non considera la riduzione 50% dell'ammortamento ordinario del primo anno (l'iperammortamento non subisce dimezzamento — cfr. Q3). Per il calcolo definitivo serve perizia tecnica e certificazione contabile.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="container">
     <div>© 2026 Muffin S.r.l. — La finanza agevolata smart</div>
@@ -579,7 +540,7 @@
 
 <!-- Sticky CTA bar -->
 <div class="sticky-cta" id="stickyCta">
-  <a href="#calculator">
+  <a href="./calcolatore.html">
     <span class="sticky-label">Quanto vale per il tuo cliente?</span>
     <span class="sticky-action">Calcola il beneficio →</span>
   </a>
@@ -717,62 +678,15 @@ searchInput.addEventListener('input', e => {
 render();
 
 // ============================================
-// CALCULATOR
-// ============================================
-const TIER1 = 2_500_000;
-const TIER2 = 10_000_000;
-const TIER3 = 20_000_000;
-const RATE1 = 1.80;
-const RATE2 = 1.00;
-const RATE3 = 0.50;
-
-const fmt = n => '€ ' + Math.round(n).toLocaleString('it-IT');
-
-function calc() {
-  const costo = parseFloat(document.getElementById('costo').value) || 0;
-  const contributi = parseFloat(document.getElementById('contributi').value) || 0;
-  const iresPct = (parseFloat(document.getElementById('ires').value) || 0) / 100;
-
-  const base = Math.max(0, costo - contributi);
-
-  // 3 fasce
-  const t1 = Math.min(base, TIER1);
-  const t2 = Math.min(Math.max(base - TIER1, 0), TIER2 - TIER1);
-  const t3 = Math.min(Math.max(base - TIER2, 0), TIER3 - TIER2);
-
-  const m1 = t1 * RATE1;
-  const m2 = t2 * RATE2;
-  const m3 = t3 * RATE3;
-  const maggTot = m1 + m2 + m3;
-
-  const risparmio = maggTot * iresPct;
-
-  document.getElementById('rowBase').textContent = fmt(base);
-  document.getElementById('rowT1').textContent = fmt(m1);
-  document.getElementById('rowT2').textContent = fmt(m2);
-  document.getElementById('rowT3').textContent = fmt(m3);
-  document.getElementById('rowMagg').textContent = fmt(maggTot);
-  document.getElementById('resultBig').textContent = fmt(risparmio);
-}
-
-['costo', 'contributi', 'ires'].forEach(id => {
-  document.getElementById(id).addEventListener('input', calc);
-});
-calc();
-
-// ============================================
-// STICKY CTA — show after hero, hide near calculator
+// STICKY CTA — show after hero (linka a calcolatore.html)
 // ============================================
 const stickyCta = document.getElementById('stickyCta');
 const heroEl = document.querySelector('.hero');
-const calcEl = document.getElementById('calculator');
 
 function updateSticky() {
-  if (!stickyCta || !heroEl || !calcEl) return;
+  if (!stickyCta || !heroEl) return;
   const pastHero = window.scrollY > (heroEl.offsetTop + heroEl.offsetHeight - 80);
-  const calcRect = calcEl.getBoundingClientRect();
-  const calcVisible = calcRect.top < window.innerHeight - 80;
-  stickyCta.classList.toggle('visible', pastHero && !calcVisible);
+  stickyCta.classList.toggle('visible', pastHero);
 }
 
 window.addEventListener('scroll', updateSticky, { passive: true });
