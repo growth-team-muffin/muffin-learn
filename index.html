@@ -158,6 +158,182 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     word-break: break-all;
   }
 
+  /* ===========================================
+     HubSpot raw HTML form — Muffin brand override
+     Selettori basati su HubSpot Forms v3 legacy.
+     Da verificare visivamente al primo render.
+     =========================================== */
+  #hubspotForm form,
+  #hubspotForm .hs-form {
+    font-family: 'Poppins', system-ui, sans-serif !important;
+  }
+  #hubspotForm fieldset {
+    max-width: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #hubspotForm fieldset.form-columns-2 .hs-form-field {
+    width: 100% !important;
+  }
+  #hubspotForm .hs-form-field {
+    margin-bottom: 14px !important;
+  }
+  #hubspotForm .hs-form-field > label,
+  #hubspotForm .hs-fieldtype-text > label,
+  #hubspotForm .hs-fieldtype-select > label {
+    display: block !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--gray-700) !important;
+    margin-bottom: 6px !important;
+  }
+  #hubspotForm .hs-form-required {
+    color: var(--orange) !important;
+    margin-left: 3px;
+  }
+  #hubspotForm .hs-field-desc {
+    font-size: 12px !important;
+    color: var(--gray-500) !important;
+    margin-top: 4px !important;
+  }
+  #hubspotForm .input { margin-right: 0 !important; }
+  #hubspotForm .hs-input {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    border: 1px solid var(--gray-200) !important;
+    border-radius: 10px !important;
+    font-family: inherit !important;
+    font-size: 15px !important;
+    color: var(--navy) !important;
+    background: var(--white) !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    line-height: 1.4 !important;
+  }
+  #hubspotForm .hs-input:focus {
+    border-color: var(--orange) !important;
+    box-shadow: 0 0 0 3px var(--orange-soft) !important;
+  }
+  #hubspotForm select.hs-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 14px center !important;
+    padding-right: 38px !important;
+  }
+  #hubspotForm textarea.hs-input {
+    min-height: 90px;
+    resize: vertical;
+  }
+  #hubspotForm .hs-error-msg,
+  #hubspotForm .hs-error-msgs label,
+  #hubspotForm .hs-main-font-element {
+    color: #DC2626 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    margin-top: 4px !important;
+  }
+  #hubspotForm input.invalid.error,
+  #hubspotForm .hs-input.error {
+    border-color: #DC2626 !important;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+  }
+  #hubspotForm .hs_submit,
+  #hubspotForm .hs-submit {
+    margin-top: 8px !important;
+  }
+  #hubspotForm .hs-button,
+  #hubspotForm input[type="submit"].hs-button {
+    display: block !important;
+    width: 100% !important;
+    padding: 14px 24px !important;
+    background: var(--orange) !important;
+    color: var(--white) !important;
+    border: none !important;
+    border-radius: 100px !important;
+    font-family: inherit !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease !important;
+    box-shadow: 0 2px 8px rgba(255, 79, 0, 0.2) !important;
+    text-shadow: none !important;
+    line-height: 1.2 !important;
+  }
+  #hubspotForm .hs-button:hover,
+  #hubspotForm input[type="submit"].hs-button:hover {
+    background: #E64700 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 14px rgba(255, 79, 0, 0.3) !important;
+  }
+  #hubspotForm .hs-button:active {
+    transform: translateY(0) !important;
+  }
+  /* Submitted thank-you message */
+  #hubspotForm .submitted-message,
+  #hubspotForm .hs-main-font-element + p {
+    text-align: center;
+    padding: 20px 16px;
+    color: var(--navy);
+    background: var(--orange-soft);
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  /* Checkbox / radio list */
+  #hubspotForm .inputs-list,
+  #hubspotForm ul.no-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #hubspotForm .inputs-list li {
+    margin-bottom: 6px !important;
+  }
+  #hubspotForm .hs-form-booleancheckbox label,
+  #hubspotForm .hs-form-checkbox label,
+  #hubspotForm .hs-form-radio label {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: var(--gray-700) !important;
+    cursor: pointer !important;
+    line-height: 1.5 !important;
+  }
+  #hubspotForm input[type="checkbox"].hs-input,
+  #hubspotForm input[type="radio"].hs-input {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 2px 0 0 0 !important;
+    padding: 0 !important;
+    accent-color: var(--orange);
+    flex-shrink: 0;
+  }
+  /* GDPR / legal consent block */
+  #hubspotForm .legal-consent-container {
+    font-size: 12px !important;
+    color: var(--gray-500) !important;
+    margin-top: 12px !important;
+    line-height: 1.5 !important;
+  }
+  #hubspotForm .legal-consent-container p {
+    margin-bottom: 8px !important;
+  }
+  #hubspotForm .legal-consent-container a {
+    color: var(--orange) !important;
+    text-decoration: underline;
+  }
+  /* Rimuovi spazi/padding indesiderati di HubSpot */
+  #hubspotForm .hs_recaptcha {
+    margin: 12px 0 !important;
+  }
+
   /* Quick value list */
   .value-list {
     margin-top: 28px;
@@ -336,7 +512,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <script>
           hbspt.forms.create({
             portalId: "147699813",
-            formId: "16c0327e-2f92-4e3c-92d1-4f227e01c811",
+            formId: "419187ed-0647-457d-9c12-10c4bf5eb18c",
             region: "eu1",
             target: "#hubspotForm"
           });
