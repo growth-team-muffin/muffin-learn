@@ -161,7 +161,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--white);
     border: 1px solid var(--gray-200);
     border-radius: 20px;
-    padding: 36px;
+    padding: 28px 28px 24px;
     box-shadow: 0 16px 48px rgba(23, 28, 79, 0.08), 0 2px 8px rgba(23, 28, 79, 0.04);
     position: relative;
     overflow: hidden;
@@ -176,13 +176,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: linear-gradient(90deg, var(--orange) 0%, var(--orange-light) 100%);
   }
   .form-card h2 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    margin-bottom: 24px;
+    margin-bottom: 14px;
     letter-spacing: -0.015em;
     color: var(--navy);
     text-align: center;
     font-family: 'Poppins', system-ui, sans-serif;
+  }
+  /* Riduce gap tra H2 e form HubSpot */
+  .form-card .hs-form-frame {
+    margin-top: 0 !important;
+  }
+  .form-card .hs-form-frame > *:first-child,
+  .form-card .hs-form-frame form > *:first-child,
+  .form-card .hs-form-frame > div > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   /* === TRUST BADGES === */
@@ -190,8 +200,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 16px;
+    padding-top: 14px;
     border-top: 1px solid var(--gray-200);
   }
   .trust-badge {
@@ -285,8 +295,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --hsf-erroralert__color: var(--red);
     --hsf-erroralert__font-size: 12px;
 
-    --hsf-row__vertical-spacing: 18px;
-    --hsf-module__vertical-spacing: 18px;
+    --hsf-row__vertical-spacing: 12px;
+    --hsf-module__vertical-spacing: 12px;
   }
 
   /* LAYER 2/3 — Selettori BARE con max specificity per evitare collisioni */
@@ -394,8 +404,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   /* Spacing fields */
   html body .hs-form-frame fieldset { border: none !important; padding: 0 !important; margin: 0 !important; max-width: none !important; }
-  .hs-form-frame .hs-form-field { margin-bottom: 18px !important; }
-  .hs-form-frame .hs-field-desc { font-size: 12px !important; color: var(--gray-500) !important; margin-top: 6px !important; }
+  .hs-form-frame .hs-form-field { margin-bottom: 12px !important; }
+  .hs-form-frame .hs-field-desc { font-size: 12px !important; color: var(--gray-500) !important; margin-top: 4px !important; }
+  /* Compatta label-to-input gap */
+  html body .hs-form-frame label { margin-bottom: 5px !important; }
   /* Submitted message */
   .hs-form-frame .submitted-message {
     text-align: center;
