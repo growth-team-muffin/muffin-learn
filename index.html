@@ -159,10 +159,115 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   /* ===========================================
-     HubSpot raw HTML form — Muffin brand override
-     Selettori basati su HubSpot Forms v3 legacy.
-     Da verificare visivamente al primo render.
+     HubSpot Form — Muffin brand override
+     Doppio layer:
+     1) CSS custom properties --hsf-* (form NUOVO editor 2024+)
+        Fonte: developers.hubspot.com/.../forms/forms
+     2) Classi .hs-* (fallback legacy form)
+        Fonte: HubSpot Forms v3 legacy
      =========================================== */
+
+  /* === LAYER 1: NEW FORM (CSS variables --hsf-*) === */
+  #hubspotForm {
+    /* Global */
+    --hsf-global__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-global__font-size: 15px;
+    --hsf-global__color: #0A1F44;
+    --hsf-global-error__color: #DC2626;
+
+    /* Row spacing */
+    --hsf-row__horizontal-spacing: 12px;
+    --hsf-row__vertical-spacing: 14px;
+    --hsf-module__vertical-spacing: 14px;
+
+    /* Button (submit) */
+    --hsf-button__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-button__font-size: 15px;
+    --hsf-button__color: #FFFFFF;
+    --hsf-button__background-color: #FF4F00;
+    --hsf-button__border-radius: 100px;
+    --hsf-button__padding: 14px 24px;
+    --hsf-button__box-shadow: 0 2px 8px rgba(255, 79, 0, 0.2);
+
+    /* Rich text */
+    --hsf-richtext__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-richtext__font-size: 13px;
+    --hsf-richtext__color: #6B7280;
+
+    /* Heading (form internal headings) */
+    --hsf-heading__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-heading__color: #0A1F44;
+
+    /* Background (form container — trasparente perché stiamo dentro form-card) */
+    --hsf-background__background-color: transparent;
+    --hsf-background__border-style: none;
+    --hsf-background__border-radius: 0;
+    --hsf-background__padding: 0;
+
+    /* Error alert */
+    --hsf-erroralert__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-erroralert__font-size: 12px;
+    --hsf-erroralert__color: #DC2626;
+
+    /* Info alert */
+    --hsf-infoalert__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-infoalert__font-size: 12px;
+    --hsf-infoalert__color: #6B7280;
+
+    /* Field label */
+    --hsf-field-label__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-field-label__font-size: 13px;
+    --hsf-field-label__color: #374151;
+    --hsf-field-label-requiredindicator__color: #FF4F00;
+
+    /* Field description (helper text) */
+    --hsf-field-description__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-field-description__color: #6B7280;
+
+    /* Field footer */
+    --hsf-field-footer__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-field-footer__color: #6B7280;
+
+    /* Field input (text / email / select) */
+    --hsf-field-input__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-field-input__color: #0A1F44;
+    --hsf-field-input__background-color: #FFFFFF;
+    --hsf-field-input__placeholder-color: #9CA3AF;
+    --hsf-field-input__border-color: #E5E7EC;
+    --hsf-field-input__border-width: 1px;
+    --hsf-field-input__border-style: solid;
+    --hsf-field-input__border-radius: 10px;
+    --hsf-field-input__padding: 12px 14px;
+
+    /* Field textarea */
+    --hsf-field-textarea__font-family: 'Poppins', system-ui, sans-serif;
+    --hsf-field-textarea__color: #0A1F44;
+    --hsf-field-textarea__background-color: #FFFFFF;
+    --hsf-field-textarea__placeholder-color: #9CA3AF;
+    --hsf-field-textarea__border-color: #E5E7EC;
+    --hsf-field-textarea__border-width: 1px;
+    --hsf-field-textarea__border-style: solid;
+    --hsf-field-textarea__border-radius: 10px;
+    --hsf-field-textarea__padding: 12px 14px;
+
+    /* Field checkbox */
+    --hsf-field-checkbox__padding: 0;
+    --hsf-field-checkbox__background-color: #FFFFFF;
+    --hsf-field-checkbox__color: #0A1F44;
+    --hsf-field-checkbox__border-color: #E5E7EC;
+    --hsf-field-checkbox__border-width: 1px;
+    --hsf-field-checkbox__border-style: solid;
+
+    /* Field radio */
+    --hsf-field-radio__padding: 0;
+    --hsf-field-radio__background-color: #FFFFFF;
+    --hsf-field-radio__color: #0A1F44;
+    --hsf-field-radio__border-color: #E5E7EC;
+    --hsf-field-radio__border-width: 1px;
+    --hsf-field-radio__border-style: solid;
+  }
+
+  /* === LAYER 2: LEGACY FORM (classi .hs-*) fallback === */
   #hubspotForm form,
   #hubspotForm .hs-form {
     font-family: 'Poppins', system-ui, sans-serif !important;
@@ -230,8 +335,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     resize: vertical;
   }
   #hubspotForm .hs-error-msg,
-  #hubspotForm .hs-error-msgs label,
-  #hubspotForm .hs-main-font-element {
+  #hubspotForm .hs-error-msgs label {
     color: #DC2626 !important;
     font-size: 12px !important;
     font-weight: 500 !important;
@@ -247,7 +351,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-top: 8px !important;
   }
   #hubspotForm .hs-button,
-  #hubspotForm input[type="submit"].hs-button {
+  #hubspotForm input[type="submit"].hs-button,
+  #hubspotForm button[type="submit"] {
     display: block !important;
     width: 100% !important;
     padding: 14px 24px !important;
@@ -265,17 +370,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     line-height: 1.2 !important;
   }
   #hubspotForm .hs-button:hover,
-  #hubspotForm input[type="submit"].hs-button:hover {
+  #hubspotForm input[type="submit"].hs-button:hover,
+  #hubspotForm button[type="submit"]:hover {
     background: #E64700 !important;
     transform: translateY(-1px) !important;
     box-shadow: 0 4px 14px rgba(255, 79, 0, 0.3) !important;
   }
-  #hubspotForm .hs-button:active {
+  #hubspotForm .hs-button:active,
+  #hubspotForm button[type="submit"]:active {
     transform: translateY(0) !important;
   }
   /* Submitted thank-you message */
-  #hubspotForm .submitted-message,
-  #hubspotForm .hs-main-font-element + p {
+  #hubspotForm .submitted-message {
     text-align: center;
     padding: 20px 16px;
     color: var(--navy);
@@ -329,7 +435,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     color: var(--orange) !important;
     text-decoration: underline;
   }
-  /* Rimuovi spazi/padding indesiderati di HubSpot */
   #hubspotForm .hs_recaptcha {
     margin: 12px 0 !important;
   }
