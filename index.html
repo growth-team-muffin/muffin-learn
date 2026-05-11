@@ -181,6 +181,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-bottom: 24px;
     letter-spacing: -0.015em;
     color: var(--navy);
+    text-align: center;
+    font-family: 'Poppins', system-ui, sans-serif;
   }
 
   /* === TRUST BADGES === */
@@ -222,6 +224,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      + selettori agnostici (catch-all per qualsiasi DOM)
      =========================================== */
 
+  /* Forza Poppins su TUTTI gli elementi del form HubSpot */
+  #hubspotForm,
+  #hubspotForm *,
+  #hubspotForm input,
+  #hubspotForm select,
+  #hubspotForm textarea,
+  #hubspotForm button,
+  #hubspotForm label,
+  #hubspotForm legend,
+  #hubspotForm fieldset,
+  #hubspotForm p,
+  #hubspotForm span,
+  #hubspotForm div,
+  #hubspotForm a {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif !important;
+  }
+
   /* LAYER 1 — Variables nuovo editor */
   #hubspotForm {
     --hsf-global__font-family: 'Poppins', system-ui, sans-serif;
@@ -233,8 +252,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --hsf-button__color: #FFFFFF;
     --hsf-button__background-color: var(--orange);
     --hsf-button__background-image: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
-    --hsf-button__border-radius: 14px;
-    --hsf-button__padding: 18px 28px;
+    --hsf-button__border-radius: 100px;
+    --hsf-button__padding: 22px 32px;
     --hsf-button__box-shadow: 0 8px 24px rgba(255, 79, 0, 0.28);
 
     --hsf-heading__font-family: 'Poppins', system-ui, sans-serif;
@@ -330,33 +349,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-left: 3px;
     font-weight: 700;
   }
-  /* Submit button — catch-all gradient pill */
+  /* Submit container centrato */
+  #hubspotForm .hs_submit,
+  #hubspotForm .hs-submit,
+  #hubspotForm .actions {
+    text-align: center !important;
+    margin-top: 12px !important;
+  }
+  /* Submit button — pill grande gradient orange */
   #hubspotForm input[type="submit"],
   #hubspotForm button[type="submit"],
   #hubspotForm button:not([type]) {
     display: block !important;
     width: 100% !important;
-    padding: 18px 28px !important;
-    margin-top: 8px !important;
+    margin: 12px auto 0 !important;
+    padding: 22px 32px !important;
     background: var(--orange) !important;
     background-image: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%) !important;
     color: var(--white) !important;
     border: none !important;
-    border-radius: 14px !important;
+    border-radius: 100px !important;
     font-family: 'Poppins', system-ui, sans-serif !important;
-    font-size: 16px !important;
+    font-size: 17px !important;
     font-weight: 600 !important;
     cursor: pointer !important;
     transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease !important;
-    box-shadow: 0 8px 24px rgba(255, 79, 0, 0.28), 0 2px 4px rgba(255, 79, 0, 0.15) !important;
+    box-shadow: 0 10px 28px rgba(255, 79, 0, 0.30), 0 2px 6px rgba(255, 79, 0, 0.18) !important;
     text-transform: none !important;
+    letter-spacing: 0 !important;
     line-height: 1.2 !important;
+    text-align: center !important;
   }
   #hubspotForm input[type="submit"]:hover,
   #hubspotForm button[type="submit"]:hover,
   #hubspotForm button:not([type]):hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 12px 32px rgba(255, 79, 0, 0.36) !important;
+    box-shadow: 0 14px 36px rgba(255, 79, 0, 0.38), 0 4px 8px rgba(255, 79, 0, 0.22) !important;
     filter: brightness(1.04);
   }
   /* Spacing fields */
