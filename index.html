@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iperammortamento 2026 — Muffin</title>
-  <meta name="description" content="28 risposte tecniche dei consulenti Muffin sui quesiti più complessi e ricorrenti dell'iperammortamento 2026.">
+  <title>Muffin — Risorse per la finanza agevolata</title>
+  <meta name="description" content="Guide tecniche, calcolatori e materiali operativi firmati dai consulenti Muffin. La libreria di chi la finanza agevolata la fa per mestiere.">
+  <meta name="robots" content="noindex">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Iperammortamento 2026 — Muffin">
-  <meta property="og:description" content="28 risposte tecniche dei consulenti Muffin sui quesiti più complessi e ricorrenti.">
+  <meta property="og:title" content="Muffin — Risorse per la finanza agevolata">
+  <meta property="og:description" content="Guide tecniche, calcolatori e materiali operativi firmati dai consulenti Muffin.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://getmuffin.io/wp-content/uploads/2026/04/Muffin-logo.png">
 
@@ -59,6 +60,8 @@
       border-radius: 4px;
     }
 
+    a { color: inherit; text-decoration: none; }
+
     .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
 
     /* ===== Header ===== */
@@ -68,22 +71,14 @@
 
     /* ===== Hero ===== */
     .hero {
-      padding: 48px 0 32px;
-      min-height: calc(100vh - 73px - 88px);
-      display: flex;
-      align-items: center;
+      padding: 72px 0 48px;
+      text-align: center;
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: 64px;
-      align-items: center;
-      width: 100%;
-    }
+    .hero-inner { max-width: 760px; margin: 0 auto; }
 
     h1 {
-      font-size: clamp(32px, 4vw, 44px);
-      line-height: 1.1;
+      font-size: clamp(34px, 4.6vw, 52px);
+      line-height: 1.08;
       font-weight: 700;
       letter-spacing: -0.025em;
       margin-bottom: 20px;
@@ -93,16 +88,19 @@
     .subhead {
       font-size: 18px;
       color: var(--gray-700);
-      max-width: 480px;
       line-height: 1.55;
+      max-width: 620px;
+      margin: 0 auto;
     }
 
     /* ===== Value list ===== */
     .value-list {
-      margin-top: 32px;
+      margin: 40px auto 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px 28px;
+      gap: 14px 32px;
+      max-width: 680px;
+      text-align: left;
     }
     .value-item {
       display: flex;
@@ -126,16 +124,22 @@
     .value-check svg { width: 12px; height: 12px; }
 
     /* ===== Audience strip ===== */
-    .audience-strip { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--gray-200); }
+    .audience-strip {
+      margin: 40px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid var(--gray-200);
+      max-width: 680px;
+      text-align: center;
+    }
     .audience-label {
       font-size: 11px;
       font-weight: 600;
       color: var(--gray-500);
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
-    .audience-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .audience-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
     .chip {
       display: inline-block;
       font-size: 13px;
@@ -149,10 +153,47 @@
     }
     .chip:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-soft); }
 
-    .normative { font-size: 11.5px; color: var(--gray-500); margin-top: 20px; }
+    /* ===== Resources section ===== */
+    .resources {
+      padding: 56px 0 88px;
+      background: var(--gray-100);
+      border-top: 1px solid var(--gray-200);
+    }
+    .resources-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+    .resources-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+    }
+    .resources h2 {
+      font-size: clamp(26px, 3vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .resources-sub {
+      font-size: 15.5px;
+      color: var(--gray-500);
+    }
 
-    /* ===== Form card ===== */
-    .form-card {
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .resource-card {
+      display: flex;
+      flex-direction: column;
       background: var(--white);
       border: 1px solid var(--gray-200);
       border-radius: var(--radius-lg);
@@ -160,46 +201,108 @@
       box-shadow: var(--shadow-card);
       position: relative;
       overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       animation: cardIn 0.6s ease-out both;
     }
-    .form-card::before {
+    .resource-card::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 4px;
       background: linear-gradient(90deg, var(--orange) 0%, var(--orange-light) 100%);
     }
-    .form-card h2 {
-      font-size: 22px;
-      font-weight: 700;
+    .resource-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 56px rgba(23, 28, 79, 0.12), 0 4px 12px rgba(23, 28, 79, 0.06);
+      border-color: var(--orange-light);
+    }
+    .resource-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: var(--orange-soft);
+      padding: 5px 10px;
+      border-radius: 100px;
       margin-bottom: 16px;
+    }
+    .resource-card h3 {
+      font-size: 20px;
+      font-weight: 700;
       letter-spacing: -0.015em;
+      line-height: 1.25;
+      margin-bottom: 12px;
       color: var(--navy);
+    }
+    .resource-card p {
+      font-size: 14.5px;
+      color: var(--gray-700);
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+    .resource-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .resource-meta span {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gray-500);
+      background: var(--gray-100);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .resource-cta {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--orange);
+    }
+    .resource-cta::after {
+      content: "→";
+      transition: transform 0.2s ease;
+    }
+    .resource-card:hover .resource-cta::after { transform: translateX(4px); }
+
+    .resource-card.is-placeholder {
+      background: transparent;
+      border: 1px dashed var(--gray-200);
+      box-shadow: none;
+      color: var(--gray-500);
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      min-height: 220px;
+      animation: none;
+    }
+    .resource-card.is-placeholder::before { display: none; }
+    .resource-card.is-placeholder:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: var(--gray-200);
+    }
+    .resource-card.is-placeholder .placeholder-label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .resource-card.is-placeholder .placeholder-sub {
+      font-size: 12.5px;
+      color: var(--gray-500);
+      margin-top: 6px;
     }
 
     @keyframes cardIn {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    /* ===== Trust badges ===== */
-    .trust-badges {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid var(--gray-200);
-    }
-    .trust-badge {
-      text-align: center;
-      font-size: 11.5px;
-      color: var(--gray-700);
-      font-weight: 600;
-      line-height: 1.3;
-    }
-    .trust-badge svg { display: block; margin: 0 auto 6px; color: var(--orange); }
 
     /* ===== Footer ===== */
     footer {
@@ -209,17 +312,15 @@
       font-size: 12.5px;
       color: var(--gray-500);
     }
-    footer .normative-footer { margin-top: 6px; font-size: 11px; opacity: 0.85; }
 
     /* ===== Responsive ===== */
     @media (max-width: 900px) {
       .container { padding: 0 20px; }
-      .hero { min-height: auto; padding: 32px 0; align-items: stretch; }
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero { padding: 48px 0 32px; }
       .value-list { grid-template-columns: 1fr; gap: 10px; }
-      .form-card { padding: 24px; }
-      .trust-badges { gap: 6px; }
-      .trust-badge { font-size: 10.5px; }
+      .resources { padding: 40px 0 64px; }
+      .resource-grid { gap: 16px; }
+      .resource-card { padding: 24px; }
     }
 
     /* ===== Reduced motion ===== */
@@ -258,77 +359,67 @@
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
-        <div class="hero-grid">
+        <div class="hero-inner">
+          <h1 id="hero-title">Finanza agevolata, <em>spiegata bene</em>.</h1>
+          <p class="subhead">Guide tecniche, calcolatori e materiali operativi firmati dai consulenti Muffin. Pensati per chi la finanza agevolata la fa per mestiere.</p>
 
-          <!-- LEFT: Copy -->
-          <div>
-            <h1 id="hero-title">Iperammortamento 2026, <em>tutto quello che devi sapere</em>.</h1>
-            <p class="subhead">28 risposte dei nostri tecnici sui quesiti più complessi e ricorrenti.</p>
+          <ul class="value-list" role="list">
+            <li class="value-item">
+              <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
+              Risposte tecniche, non slogan
+            </li>
+            <li class="value-item">
+              <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
+              Sempre allineate alla normativa vigente
+            </li>
+            <li class="value-item">
+              <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
+              Scritte da consulenti che la applicano davvero
+            </li>
+            <li class="value-item">
+              <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
+              Aggiornate quando la norma cambia
+            </li>
+          </ul>
 
-            <ul class="value-list" role="list">
-              <li class="value-item">
-                <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
-                Iter GSE in 3 fasi
-              </li>
-              <li class="value-item">
-                <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
-                Beni agevolabili &amp; border-line
-              </li>
-              <li class="value-item">
-                <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
-                Calcolo, maggiorazione, cumulo
-              </li>
-              <li class="value-item">
-                <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
-                Documentazione &amp; professionisti
-              </li>
-              <li class="value-item">
-                <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
-                ERP, leasing, e-commerce
-              </li>
-              <li class="value-item">
-                <span class="value-check" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
-                Calcolatore beneficio incluso
-              </li>
-            </ul>
-
-            <div class="audience-strip">
-              <div class="audience-label">Pensata per</div>
-              <div class="audience-chips">
-                <span class="chip">Commercialisti</span>
-                <span class="chip">Consulenti del Lavoro</span>
-                <span class="chip">Consulenti Finanza Agevolata</span>
-                <span class="chip">PMI</span>
-              </div>
+          <div class="audience-strip">
+            <div class="audience-label">Pensata per</div>
+            <div class="audience-chips">
+              <span class="chip">Commercialisti</span>
+              <span class="chip">Consulenti del Lavoro</span>
+              <span class="chip">Consulenti Finanza Agevolata</span>
+              <span class="chip">PMI</span>
             </div>
-
-            <p class="normative">
-              Basata su L. 199/2025 art. 1 commi 427-436 · TUIR art. 109 · Circolare 4/E
-            </p>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- RIGHT: Form card -->
-          <aside class="form-card" aria-labelledby="form-title">
-            <h2 id="form-title">Accedi alla guida</h2>
+    <section class="resources" aria-labelledby="resources-title">
+      <div class="container">
+        <div class="resources-head">
+          <div class="resources-eyebrow">La libreria Muffin</div>
+          <h2 id="resources-title">Le risorse disponibili</h2>
+          <p class="resources-sub">Guide tecniche e strumenti pratici, uno per ogni misura.</p>
+        </div>
 
-            <div id="muffin-hs-form"></div>
-
-            <div class="trust-badges">
-              <div class="trust-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
-                Gratuito
-              </div>
-              <div class="trust-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                Accesso immediato
-              </div>
-              <div class="trust-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                Niente spam
-              </div>
+        <div class="resource-grid">
+          <a class="resource-card" href="./guida-iperammortamento/" aria-label="Apri la guida Iperammortamento 2026">
+            <span class="resource-tag">Iperammortamento 2026</span>
+            <h3>Tutto quello che devi sapere sull'Iperammortamento 2026</h3>
+            <p>28 risposte tecniche dei nostri consulenti sui quesiti più complessi e ricorrenti. Guida operativa e calcolatore del beneficio inclusi.</p>
+            <div class="resource-meta">
+              <span>Guida</span>
+              <span>Calcolatore</span>
+              <span>L. 199/2025</span>
             </div>
-          </aside>
+            <span class="resource-cta">Esplora la risorsa</span>
+          </a>
 
+          <div class="resource-card is-placeholder" aria-hidden="true">
+            <div class="placeholder-label">Nuove risorse in arrivo</div>
+            <div class="placeholder-sub">Stiamo lavorando alla prossima guida.</div>
+          </div>
         </div>
       </div>
     </section>
@@ -337,22 +428,8 @@
   <footer>
     <div class="container">
       <div>© 2026 Muffin S.r.l. — La finanza agevolata smart</div>
-      <div class="normative-footer">
-        Riferimenti: L. 199/2025 art. 1 commi 427-436 · TUIR art. 109 · Circolare 4/E. Contenuto a scopo informativo per professionisti del settore.
-      </div>
     </div>
   </footer>
-
-  <!-- HubSpot form embed (Legacy Builder v2) -->
-  <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
-  <script>
-    hbspt.forms.create({
-      portalId: "147699813",
-      formId: "16c0327e-2f92-4e3c-92d1-4f227e01c811",
-      region: "eu1",
-      target: "#muffin-hs-form"
-    });
-  </script>
 
 </body>
 </html>
